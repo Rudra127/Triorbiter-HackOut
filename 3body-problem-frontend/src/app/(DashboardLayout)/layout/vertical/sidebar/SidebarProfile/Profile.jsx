@@ -47,7 +47,7 @@ export const Profile = () => {
         <>
           <Avatar
             alt="Profile Image"
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}/user/userProfileImages/${user?.profileImagePath}`}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL}/userProfileImages/${user?.profileImagePath}`}
             sx={{ height: 40, width: 40 }}
           />
 

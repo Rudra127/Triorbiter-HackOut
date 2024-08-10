@@ -36,7 +36,7 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
       console.log(values);
       const body = values;
       if (values) {
-        const registeredUser = await axios.post('/user/auth/login', body);
+        const registeredUser = await axios.post('/auth/login', body);
         console.log('USER', registeredUser.data);
         if (registeredUser.status === 200 && registeredUser.data.loggedIn) {
           toast.success('You logged in successfully!');

@@ -52,7 +52,7 @@ const Profile = () => {
         onClick={handleClick2}
       >
         <Avatar
-          src={`${process.env.NEXT_PUBLIC_BASE_URL}/user/userProfileImages/${user?.profileImagePath}`}
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}/userProfileImages/${user?.profileImagePath}`}
           alt={'ProfileImg'}
           sx={{
             width: 35,
@@ -81,7 +81,7 @@ const Profile = () => {
         <Typography variant="h5">User Profile</Typography>
         <Stack direction="row" py={3} spacing={2} alignItems="center">
           <Avatar
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}/user/userProfileImages/${user?.profileImagePath}`}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL}/userProfileImages/${user?.profileImagePath}`}
             alt={'ProfileImg'}
             sx={{ width: 95, height: 95 }}
           />

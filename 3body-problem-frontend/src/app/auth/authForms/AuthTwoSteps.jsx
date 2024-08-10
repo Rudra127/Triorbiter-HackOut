@@ -22,7 +22,7 @@ const AuthTwoSteps = () => {
       console.log(body);
       if (combinedOtp && combinedOtp.length === 7) {
         setIsSubmitting(true);
-        const verifiedOTP = await axios.post('/user/auth/verifySMS', body);
+        const verifiedOTP = await axios.post('/auth/verifySMS', body);
         console.log(verifiedOTP);
         if (verifiedOTP.status === 200) {
           toast.success('You registered successfully! verify your Mobile No.');

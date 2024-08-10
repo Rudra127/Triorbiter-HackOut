@@ -35,7 +35,7 @@ export default function UpdatePassword() {
     console.log('emailId:', emailid);
     console.log('token:', token);
     try {
-      const response = await axios.post(`/user/auth/forgotPassword/verify/${emailid}/${token}`, {
+      const response = await axios.post(`/auth/forgotPassword/verify/${emailid}/${token}`, {
         newPassword,
       });
       console.log('Response:', response.data);

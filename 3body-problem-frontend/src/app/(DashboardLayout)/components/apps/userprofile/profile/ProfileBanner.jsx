@@ -154,8 +154,8 @@ const ProfileBanner = ({ serviceProvider }) => {
                   <Avatar
                     src={
                       serviceProvider
-                        ? `${process.env.NEXT_PUBLIC_BASE_URL}/user/userProfileImages/${serviceProvider?.profileImagePath}`
-                        : `${process.env.NEXT_PUBLIC_BASE_URL}/user/userProfileImages/${user?.profileImagePath}`
+                        ? `${process.env.NEXT_PUBLIC_BASE_URL}/userProfileImages/${serviceProvider?.profileImagePath}`
+                        : `${process.env.NEXT_PUBLIC_BASE_URL}/userProfileImages/${user?.profileImagePath}`
                     }
                     alt="profileImage"
                     sx={{
