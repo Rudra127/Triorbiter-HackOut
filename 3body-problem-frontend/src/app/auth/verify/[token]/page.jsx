@@ -14,7 +14,7 @@ const LinkAuthentication = () => {
     const backendUrl = process.env.NEXT_PUBLIC_MAIN_BACKEND_URL;
     console.log('Backend URL:', backendUrl);
     try {
-      const response = await axios.get(`/user/auth/verify/${token}`);
+      const response = await axios.get(`/auth/verify/${token}`);
       console.log('user TOKEN', response);
       setVerificationMessage(response.data);
       if (response.status === 200) {

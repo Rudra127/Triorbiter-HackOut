@@ -31,7 +31,7 @@ function EditProfile({ showEditProfilePic, setShowEditProfilePic }) {
     try {
       const formData = new FormData();
       formData.append('profileImage', profileImage);
-      const response = await axios.post('/user/upload-userProfile-img', formData, {
+      const response = await axios.post('/upload-userProfile-img', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           userId: user.userId,
@@ -83,7 +83,7 @@ function EditProfile({ showEditProfilePic, setShowEditProfilePic }) {
                 src={
                   profileImage
                     ? URL.createObjectURL(profileImage)
-                    : `${process.env.NEXT_PUBLIC_BASE_URL}/user/userProfileImages/${user?.profileImagePath}`
+                    : `${process.env.NEXT_PUBLIC_BASE_URL}/userProfileImages/${user?.profileImagePath}`
                 }
                 alt="profile image"
                 sx={{

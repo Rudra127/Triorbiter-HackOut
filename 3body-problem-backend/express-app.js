@@ -14,7 +14,7 @@ const expressApp = async (app) => {
   app.use(express.urlencoded({ extended: true, limit: "1mb" }));
   app.use(
     cors({
-      origin: [process.env.MAIN_BACKEND_URL],
+      origin: [process.env.MAIN_BACKEND_URL, process.env.FRONTEND_URL],
       methods: ["GET", "POST", "UPDATE", "DELETE"],
       credentials: true,
     })

@@ -14,7 +14,7 @@ const useAuth = () => {
   useEffect(() => {
     const checkAuthToken = async () => {
       try {
-        const response = await axios.post('/user/auth/verifyUser');
+        const response = await axios.post('/auth/verifyUser');
         const { status, firstName, lastName, email, userId, profileImagePath, loggedIn } = response.data;
         if (status === 'authenticated' || loggedIn == true) {
           updateUser({

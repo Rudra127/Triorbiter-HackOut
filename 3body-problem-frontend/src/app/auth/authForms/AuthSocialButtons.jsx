@@ -25,7 +25,7 @@ const AuthSocialButtons = ({ title }) => {
             email: session?.user?.email,
             profileImage: session?.user?.image,
           };
-          const registeredUser = await axios.post('/user/auth/nextAuthRegister', body);
+          const registeredUser = await axios.post('/auth/nextAuthRegister', body);
           console.log('next Auth', registeredUser);
 
           if (registeredUser?.status === 200) {

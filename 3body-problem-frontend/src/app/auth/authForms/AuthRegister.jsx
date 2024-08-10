@@ -35,7 +35,7 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
       console.log(values);
       const body = values;
       if (values) {
-        const registeredUser = await axios.post('/user/auth/register', body);
+        const registeredUser = await axios.post('/auth/register', body);
         console.log(registeredUser.data);
         if (registeredUser.status === 200) {
           toast.success('You registered successfully! Check your email to verify yourself.');
