@@ -10,6 +10,7 @@ import {
   generateSignature,
 } from "../utils/index.js";
 import { APIError } from "../utils/app-errors.js";
+import { sendUserWelcomeEmail, sendUserVerificationMail } from "../mailSending/mails/mail.js";
 
 // All Business logic will be here
 export default class userService {
@@ -32,8 +33,10 @@ export default class userService {
         email: email,
         userId: existingUser.userId,
       });
-      const userUrl = `${process.env.MAIN_BACKEND_URL}/api/v1/user/auth/verify/${token}`;
+      const userUrl = `${process.env.MAIN_BACKEND_URL}/auth/verify/${token}`;
       console.log(userUrl);
+      sendUserWelcomeEmail(existingUser.email);
+      sendUserVerificationMail(existingUser.email, userUrl );
       return formateData({
         message: "verify your email address",
         verificationUrl: userUrl,
@@ -185,4 +188,8 @@ export default class userService {
       throw new APIError("Data Not found ok ok ", err);
     }
   }
+
+
+
+
 }
