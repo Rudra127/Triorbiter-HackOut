@@ -84,7 +84,10 @@ const postSchema = new mongoose.Schema(
     dislikes:{
       type: Number,
       default: 0,
-    }
+    },engagementScore: {
+      type: Number,
+      default: 0,
+    }    
   },
   { timestamps: true }
 );
