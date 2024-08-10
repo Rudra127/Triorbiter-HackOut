@@ -28,7 +28,7 @@ const Profile = () => {
   const handleLogout = async () => {
     signOut();
     if (process.env.NEXT_PUBLIC_APP_DEPLOYED) {
-      document.cookie = `userAuthToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.yourdomain.com; SameSite=None; Secure`;
+      document.cookie = `userAuthToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.glitchastra.com; SameSite=None; Secure`;
       router.push('/auth/login');
     }
 

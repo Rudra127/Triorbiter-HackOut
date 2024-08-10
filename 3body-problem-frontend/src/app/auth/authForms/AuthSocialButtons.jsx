@@ -32,7 +32,7 @@ const AuthSocialButtons = ({ title }) => {
             if (process.env.NEXT_PUBLIC_APP_DEPLOYED) {
               document.cookie = `userAuthToken=${registeredUser.data.token}; expires=${new Date(
                 Date.now() + 15 * 24 * 60 * 60 * 1000,
-              ).toUTCString()}; path=/; domain=.yourdomain.com; SameSite=None; Secure`;
+              ).toUTCString()}; path=/; domain=.glitchastra.com; SameSite=None; Secure`;
               router.push('/');
             }
             document.cookie = `userAuthToken=${registeredUser.data.token}; expires=${new Date(

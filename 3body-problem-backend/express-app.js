@@ -5,6 +5,7 @@ import HandleErrors from "./utils/error-handler.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
+import post from "./api/post.js";
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
@@ -25,7 +26,7 @@ const expressApp = async (app) => {
 
   //api
   user(app);
-
+  post(app);
   // error handling
   app.use(HandleErrors);
 };

@@ -3,8 +3,8 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import ejs from "ejs";
-import { userModel } from "../../database/models/index.js";
 import { MAIL_APP_PASSWORD, MAIL_ID } from "../../config/index.js";
+import userModel from "../../database/models/user.js";
 
 console.log("email id from the env is", MAIL_ID);
 const __filename = fileURLToPath(import.meta.url);
@@ -42,8 +42,8 @@ function sendEmail(to, subject, text, html) {
   });
 }
 
-async function senduserWelcomeEmail(userEmail) {
-  const subject = "Welcome to karyMitra";
+async function sendUserWelcomeEmail(userEmail) {
+  const subject = "Welcome to TriOrbiter";
   const text = "WELCOME!";
 
   try {
@@ -72,7 +72,7 @@ async function senduserWelcomeEmail(userEmail) {
     throw new Error("Welcome Email could not be sent");
   }
 }
-async function senduserVerificationMail(userEmail, link) {
+async function sendUserVerificationMail(userEmail, link) {
   const subject = "Verification Link";
   const text = "Please verify your self!";
 
@@ -106,4 +106,4 @@ async function senduserVerificationMail(userEmail, link) {
     throw new Error("Verification Email could not be sent");
   }
 }
-export { senduserWelcomeEmail, senduserVerificationMail };
+export { sendUserWelcomeEmail, sendUserVerificationMail };
