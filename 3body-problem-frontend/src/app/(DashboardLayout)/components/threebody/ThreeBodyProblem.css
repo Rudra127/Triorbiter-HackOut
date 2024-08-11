@@ -255,3 +255,14 @@
   background-color: #999999;
   border: 1px solid #ffffff;
 }
+
+.ThreeBodyProblem-pauseResume {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.ThreeBodyProblem-pauseResumeIcon {
+  width: 24px;
+  height: 24px;
+}

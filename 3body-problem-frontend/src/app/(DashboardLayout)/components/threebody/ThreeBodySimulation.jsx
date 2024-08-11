@@ -772,31 +772,6 @@ function ThreeBodySimulation() {
       //    paleOrbitalPaths: If true then the orbital path is paler than usual.
       //
       var allPresets = {
-        RandomConfiguration: {
-          dimensionless: false,
-          masses: [1.2, 0.8, 1.5],
-          massSlider: {
-            min: 0.1,
-            max: 5,
-            power: 3,
-          },
-          timeScaleFactor: 1,
-          timeScaleFactorSlider: {
-            min: 0.0,
-            max: 5000,
-            power: 5,
-          },
-          positions: [
-            polarFromCartesian({ x: 2, y: -1 }),
-            polarFromCartesian({ x: -1, y: 1 }),
-            polarFromCartesian({ x: 0.5, y: -2 }),
-          ],
-          velocities: [
-            polarFromCartesian({ x: -0.5, y: 0.2 }),
-            polarFromCartesian({ x: 0.3, y: -0.4 }),
-            polarFromCartesian({ x: -0.2, y: 0.6 }),
-          ],
-        },
         FigureEight: {
           dimensionless: true,
           masses: [1, 1, 1],
@@ -1018,7 +993,7 @@ function ThreeBodySimulation() {
 
         var name = element.getAttribute('data-name');
         var preset = allPresets[name];
-        console.log('preset', preset);
+
         if (content.didChangeModel !== null) {
           content.didChangeModel(preset);
         }
@@ -1510,12 +1485,6 @@ function ThreeBodySimulation() {
         data-name="FigureEight"
       >
         Figure eight
-      </button>
-      <button
-        class="ThreeBodyProblem-preset ThreeBodyProblem-button ThreeBodyProblem-button--isSelected"
-        data-name="RandomConfiguration"
-      >
-        Random Configuration
       </button>
       <button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="SunEarthJupiter">
         Sun, Earth and Jupiter

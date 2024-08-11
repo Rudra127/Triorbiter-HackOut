@@ -54,6 +54,7 @@ import {
   IconUserHeart,
   IconUserShare,
   IconCpu2,
+  IconBrandReact,
 } from '@tabler/icons-react';
 const Menuitems = [
   {
@@ -68,6 +69,12 @@ const Menuitems = [
     href: '/',
   },
 
+  {
+    id: uniqueId(),
+    title: '3 Body Simulator',
+    icon: IconBrandReact,
+    href: '/ThreeBodySimulator',
+  },
 
   // {
   //   id: uniqueId(),
@@ -95,7 +102,6 @@ const Menuitems = [
   //     },
   //   ],
   // },
-  
 ];
 
 export default Menuitems;
