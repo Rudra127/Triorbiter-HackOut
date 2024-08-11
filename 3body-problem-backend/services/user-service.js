@@ -33,7 +33,7 @@ export default class userService {
         email: email,
         userId: existingUser.userId,
       });
-      const userUrl = `${process.env.MAIN_BACKEND_URL}/auth/verify/${token}`;
+      const userUrl = `${process.env.FRONTEND_URL}/auth/verify/${token}`;
       console.log(userUrl);
       sendUserWelcomeEmail(existingUser.email);
       sendUserVerificationMail(existingUser.email, userUrl );
@@ -92,7 +92,7 @@ export default class userService {
           email: existingUser.email,
         });
         const emailId = existingUser.email;
-        const forgotPasswordUrl = `${process.env.MAIN_BACKEND_URL}/auth/forgotPassword/${emailId}/${token}`;
+        const forgotPasswordUrl = `${process.env.FRONTEND_URL}/auth/forgotPassword/${emailId}/${token}`;
         console.log(forgotPasswordUrl);
         sendUserForgotPasswordLink(email, forgotPasswordUrl);
         return formateData({
