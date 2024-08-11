@@ -5,7 +5,6 @@ import { IconSearch } from '@tabler/icons-react';
 
 // redux
 import { useDispatch } from 'react-redux';
-import { SearchProduct } from '@/store/apps/eCommerce/ECommerceSlice';
 
 // ----------------------------------------------------------------------
 export default function ServiceProviderSearch() {
