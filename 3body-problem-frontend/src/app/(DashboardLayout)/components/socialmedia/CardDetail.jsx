@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { IconThumbUp, IconThumbUpFilled, IconThumbDown, IconThumbDownFilled, IconMessageCircle } from '@tabler/icons-react';
 import Breadcrumb from "./Breadcrumb";
+import CommentPopup from './CommentPopup'; // Import the CommentPopup component
 
 const CardDetail = () => {
-  // State for all data
   const [data, setData] = useState({
     likes: 120,
     dislikes: 20,
@@ -22,13 +22,12 @@ const CardDetail = () => {
   const [showAllComments, setShowAllComments] = useState(false);
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
+  const [isCommentPopupVisible, setIsCommentPopupVisible] = useState(false); // State to control the visibility of the comment popup
 
-  // Toggle show more comments
   const toggleComments = () => {
     setShowAllComments(!showAllComments);
   };
 
-  // Handle like button click
   const handleLike = () => {
     if (liked) {
       setData((prevData) => ({
@@ -40,14 +39,13 @@ const CardDetail = () => {
       setData((prevData) => ({
         ...prevData,
         likes: prevData.likes + 1,
-        dislikes: disliked ? prevData.dislikes - 1 : prevData.dislikes, // Reduce dislike if previously disliked
+        dislikes: disliked ? prevData.dislikes - 1 : prevData.dislikes,
       }));
       setLiked(true);
       setDisliked(false);
     }
   };
 
-  // Handle dislike button click
   const handleDislike = () => {
     if (disliked) {
       setData((prevData) => ({
@@ -59,17 +57,30 @@ const CardDetail = () => {
       setData((prevData) => ({
         ...prevData,
         dislikes: prevData.dislikes + 1,
-        likes: liked ? prevData.likes - 1 : prevData.likes, // Reduce like if previously liked
+        likes: liked ? prevData.likes - 1 : prevData.likes,
       }));
       setDisliked(true);
       setLiked(false);
     }
   };
 
+  const handleCommentSubmit = (commentText) => {
+    const newComment = {
+      id: data.comments.length + 1,
+      user: "Current User", // Replace with actual user data
+      text: commentText,
+    };
+
+    setData((prevData) => ({
+      ...prevData,
+      comments: [...prevData.comments, newComment],
+    }));
+  };
+
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Videos', href: '/videos' },
-    { label: 'Video Detail' }, // No href for the current page
+    { label: 'Video Detail' },
   ];
 
   return (
@@ -80,7 +91,7 @@ const CardDetail = () => {
       <div className="relative w-full h-64 md:h-96 bg-black">
         <iframe
           className="w-full h-full"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Replace with your video URL
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
           title="Video Title"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -110,7 +121,7 @@ const CardDetail = () => {
           )}
           <span>{data.dislikes} </span>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer" onClick={() => setIsCommentPopupVisible(true)}>
           <IconMessageCircle className="mr-2 w-6 h-6" />
           <span>{data.comments.length} Comments</span>
         </div>
@@ -140,6 +151,13 @@ const CardDetail = () => {
           )}
         </div>
       </div>
+
+      {/* Comment Popup */}
+      <CommentPopup
+        isVisible={isCommentPopupVisible}
+        onClose={() => setIsCommentPopupVisible(false)}
+        onSubmit={handleCommentSubmit}
+      />
     </div>
   );
 };
