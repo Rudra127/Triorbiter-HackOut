@@ -1,7 +1,6 @@
 import { postRepository } from "../database/index.js";
 import {
   formateData,
-
 } from "../utils/index.js";
 import { APIError } from "../utils/app-errors.js";
 
