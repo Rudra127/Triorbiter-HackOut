@@ -2,15 +2,26 @@ import express from "express";
 import cors from "cors";
 import user from "./api/user.js";
 import HandleErrors from "./utils/error-handler.js";
-import path from "path";
-import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+import post from "./api/post.js";
+import { Server } from "socket.io";
+import http from "http";
 
 const expressApp = async (app) => {
-  app.use(express.json({ limit: "1mb" }));
+  // Create an HTTP server and pass the Express app to it
+  const server = http.createServer(app);
+
+  // Initialize Socket.IO with the HTTP server
+  const io = new Server(server, {
+    cors: {
+      origin: [process.env.MAIN_BACKEND_URL, process.env.FRONTEND_URL],
+      methods: ["GET", "POST", "UPDATE", "DELETE"],
+      credentials: true,
+    },
+  });
+
+  // Apply middleware
+  app.use(express.json());
   app.use(express.urlencoded({ extended: true, limit: "1mb" }));
   app.use(
     cors({
@@ -19,15 +30,17 @@ const expressApp = async (app) => {
       credentials: true,
     })
   );
-  // app.use(express.static(path.join(__dirname, "public")));
-
   app.use(cookieParser());
 
-  //api
+  // Initialize API routes with Socket.IO
   user(app);
+  post(app, io); // Pass the io instance to post routes
 
-  // error handling
+  // Error handling middleware
   app.use(HandleErrors);
+
+  // Return the server to be used outside this function
+  return server;
 };
 
 export default expressApp;
